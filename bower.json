@@ -1,0 +1,19 @@
+{
+  "name": "terra-mystica",
+  "version": "0.0.0",
+  "homepage": "https://github.com/nelson54/terra-mystica",
+  "description": "implementation of Terra Mystica",
+  "keywords": [
+    "Terra",
+    "Mystica"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

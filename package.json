@@ -1,0 +1,20 @@
+{
+  "name": "terra-mystica",
+  "version": "0.0.0",
+  "description": "implementation of the Terra Mystica board game",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nelson54/terra-mystica"
+  },
+  "keywords": [
+    "terra",
+    "mystica",
+    "express"
+  ],
+  "author": "",
+  "bugs": {
+    "url": "https://github.com/nelson54/terra-mystica/issues"
+  },
+  "homepage": "https://github.com/nelson54/terra-mystica"
+}
