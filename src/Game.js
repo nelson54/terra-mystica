@@ -1,14 +1,10 @@
-var Game = function(){
+var gameUtils = require('gameUtils');
 
-    this.setPlayers = function(){
-
-    };
-
-    this.nextPlayer = function(){
-
-    };
-
-
-
+var Game = function(players, world){
+    this.id = gameUtils.makeId();
+    this.players = players;
+    this.world = world;
 
 };
+
+module.exports = Game;
