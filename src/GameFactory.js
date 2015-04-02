@@ -1,10 +1,14 @@
 var Game = require('./Game');
 var World = require('./World');
 var HexCoord = require('./HexCoord');
-module.exports.create = function(){
+var Players = require('./Players');
+var Player = require('./Player');
+
+module.exports.create = function(numberOfPlayers){
     var height = 9;
     var width = 13;
 
+    var players = new Players;
     var coords = [];
 
     var numberOfCoords = height * width;
@@ -15,7 +19,11 @@ module.exports.create = function(){
 
         coords[x] = new HexCoord(q,r);
     }
+
+    for(var p = 0; p < numberOfPlayers; p++){
+        players.addPlayer(new Player());
+    }
     var grid = new World(width, height, coords);
-    return new Game([], grid);
+    return new Game(players, grid);
 };
 
