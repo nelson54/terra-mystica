@@ -1,14 +1,8 @@
-var Game = function(){
+var Game = function(players, world){
 
-    this.setPlayers = function(){
-
-    };
-
-    this.nextPlayer = function(){
-
-    };
-
-
-
+    this.players = players;
+    this.world = world;
 
 };
+
+module.exports = Game;
