@@ -1,4 +1,4 @@
-function hexCoord(q,r) {
+var HexCoord = function(q,r) {
     this.q = q;
     this.r = r;
 
@@ -20,4 +20,6 @@ function hexCoord(q,r) {
     this.getAdjacentCoord = function() {
         return [this.getDirectionalCoord(0), this.getDirectionalCoord(1), this.getDirectionalCoord(2), this.getDirectionalCoord(3), this.getDirectionalCoord(4), this.getDirectionalCoord(5)];
     };
-}
+};
+
+module.exports = HexCoord;
