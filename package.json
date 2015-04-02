@@ -16,5 +16,9 @@
   "bugs": {
     "url": "https://github.com/nelson54/terra-mystica/issues"
   },
-  "homepage": "https://github.com/nelson54/terra-mystica"
+  "homepage": "https://github.com/nelson54/terra-mystica",
+  "dependencies": {
+    "express": "^4.12.3",
+    "lodash": "^3.6.0"
+  }
 }
