@@ -30,4 +30,16 @@ $(function(){
 
             })
     });
+
+    $('#shovelTrack').on('click', function(e){
+        jQuery.ajax(api+'/shovel-track', {method:'post'}).then(function(){
+
+        })
+    });
+
+    $('#shippingTrack').on('click', function(e){
+        jQuery.ajax(api+'/shipping-track', {method:'post'}).then(function(){
+
+        });
+    });
 });
