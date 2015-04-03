@@ -22,7 +22,7 @@ app.get('/api/game',function (req, res) {
 });
 
 app.get('/', function (req, res) {
-    res.render('index', { title: 'Hey', message: 'Hello there!'});
+    res.render('index');
 });
 
 var server = app.listen(app.get('port'), function () {
