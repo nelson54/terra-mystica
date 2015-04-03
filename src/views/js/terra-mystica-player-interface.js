@@ -32,13 +32,13 @@ $(function(){
     });
 
     $('#shovelTrack').on('click', function(e){
-        jQuery.ajax(api+'/shovel-track', {method:'post'}).then(function(){
+        jQuery.post(api+'/shovel-track').then(function(){
 
         })
     });
 
     $('#shippingTrack').on('click', function(e){
-        jQuery.ajax(api+'/shipping-track', {method:'post'}).then(function(){
+        jQuery.post(api+'/shipping-track').then(function(){
 
         });
     });

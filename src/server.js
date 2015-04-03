@@ -68,6 +68,21 @@ api.get('/game/:gameId/players/:playerId',function (req, res) {
     res.json(games[req.params.gameId].players.players[req.params.playerId]);
 });
 
+api.post('/game/:gameId/players/:playerId/shovel-track', function(req, res){
+    var game = games[req.params.gameId];
+    var player = game.players.getPlayer(req.params.playerId);
+
+    player.upgradeShovelTrack();
+
+    res.type('application/json');
+    res.json();
+});
+
+api.post('/game/:gameId/players/:playerId/shipping-track', function(req, res){
+    res.type('application/json');
+    res.json(games[req.params.id]);
+});
+
 front.use('/api', api);
 
 var server = front.listen(front.get('port'), function () {
