@@ -22,8 +22,7 @@ $(function(){
 
     $('#build').on('click', function(e){
         var data = {
-            upgrade: hex,
-            spades: -1
+            upgrade: hex
         };
 
         jQuery.ajax(api+'/build', {data: data, method: 'post'})
