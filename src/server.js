@@ -28,6 +28,11 @@ front.get('/games/:gameId/players', function (req, res) {
     res.render('players.jade', {game: game});
 });
 
+front.get('/game/:gameId/players/:playerId',function (req, res) {
+    var game = games[req.params.gameId];
+    res.render('game.jade', {game: game});
+});
+
 // api
 var api = express();
 
