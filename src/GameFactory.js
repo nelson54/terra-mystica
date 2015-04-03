@@ -5,7 +5,7 @@ var Hex = require('./Hex');
 var Players = require('./Players');
 var Player = require('./Player');
 var Buildings = require('./buildings');
-var witch = require('./faction/witch');
+var witch = require('./factions/witches');
 
 module.exports.create = function(numberOfPlayers){
     var height = 9;

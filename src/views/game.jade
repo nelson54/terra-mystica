@@ -4,8 +4,27 @@ include base.jade
 #player-area()
     h3= player.id
 
-    button#dig Terraform
-    button#build Build
+    #controls
+        button#dig Terraform
+        button#build Build
+
+    ul#resources
+        each amount, type in player.resources
+            li
+                strong.type=type
+                span.amount=amount
+
+    #shipping
+        h3 Shipping
+        - var shipping = player.shipping;
+        p
+            strong= shipping.upgradeCost
+
+    #shovel
+        h3 Shovel
+        - var shovel = player.shovel;
+        p
+            strong= shovel.upgradeCost
 
 
 script(type="text/javascript", src="//cdnjs.cloudflare.com/ajax/libs/phaser/2.3.0/phaser.min.js")
