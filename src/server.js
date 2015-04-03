@@ -6,6 +6,8 @@ var makeGame = require('./GameFactory').create;
 // front sends client code
 var front = express();
 
+var games = {};
+
 front.set('port', (process.env.PORT || 4000));
 front.set('views', __dirname+'/views');
 front.set('view engine', 'jade');
@@ -22,6 +24,15 @@ front.get('/', function (req, res) {
 
 // api
 var api = express();
+
+api.post('/game',function (req, res) {
+    var game = makeGame(2);
+
+    games[game.id] = game;
+
+    res.type('application/json');
+    res.json(game);
+});
 
 api.get('/game',function (req, res) {
     res.type('application/json');
