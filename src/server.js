@@ -28,6 +28,21 @@ api.get('/game',function (req, res) {
     res.json(makeGame(2));
 });
 
+api.get('/game/{id}',function (req, res) {
+    res.type('application/json');
+    res.json(makeGame(2));
+});
+
+api.get('/game/{id}/players',function (req, res) {
+    res.type('application/json');
+    res.json(makeGame(2));
+});
+
+api.get('/game/{gameId}/players/{playerId}',function (req, res) {
+    res.type('application/json');
+    res.json(makeGame(2));
+});
+
 front.use('/api', api);
 
 var server = front.listen(front.get('port'), function () {
