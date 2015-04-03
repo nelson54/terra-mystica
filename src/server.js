@@ -48,19 +48,19 @@ api.get('/game',function (req, res) {
     res.json(game);
 });
 
-api.get('/game/{id}',function (req, res) {
+api.get('/game/:id',function (req, res) {
     res.type('application/json');
-    res.json(makeGame(2));
+    res.json(games[req.params.id]);
 });
 
-api.get('/game/{id}/players',function (req, res) {
+api.get('/game/:id/players',function (req, res) {
     res.type('application/json');
-    res.json(makeGame(2));
+    res.json(games[req.params.id].players);
 });
 
-api.get('/game/{gameId}/players/{playerId}',function (req, res) {
+api.get('/game/:gameId/players/:playerId',function (req, res) {
     res.type('application/json');
-    res.json(makeGame(2));
+    res.json(games[req.params.gameId].players.players[req.params.playerId]);
 });
 
 front.use('/api', api);
