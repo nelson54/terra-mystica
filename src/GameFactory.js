@@ -1,21 +1,33 @@
+var _ = require('lodash');
 var Game = require('./Game');
 var World = require('./World');
-var HexCoord = require('./HexCoord');
-module.exports.create = function(){
+var Hex = require('./Hex');
+var Players = require('./Players');
+var Player = require('./Player');
+
+module.exports.create = function(numberOfPlayers){
     var height = 9;
     var width = 13;
 
-    var coords = [];
+    var players = new Players;
+    var hexs = [];
 
     var numberOfCoords = height * width;
 
     for(var x = 0; x < numberOfCoords; x++){
         var q = Math.floor(x / width);
-        var r = Math.floor(x / height);
-
-        coords[x] = new HexCoord(q,r);
+        var r = x % width;
+        console.log({q:q,r:r});
+        var hex = new Hex(q,r);
+        hex.terrainType = World.terrains[x];
+        hexs[x] = hex;
     }
-    var grid = new World(width, height, coords);
-    return new Game([], grid);
+
+    for(var p = 0; p < numberOfPlayers; p++){
+        players.addPlayer(new Player());
+    }
+
+    var grid = new World(width, height, hexs);
+    return new Game(players, grid);
 };
 

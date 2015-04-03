@@ -1,6 +1,12 @@
-var HexCoord = function(q,r) {
+var terrains = require('./terrains');
+
+var Hex = function(q,r) {
     this.q = q;
     this.r = r;
+
+    this.terrainType = terrains.__BLANK;
+
+    this.building = null;
 
     this.getDirectionalCoord = function(dir) {
         if(dir == 0) {
@@ -22,4 +28,4 @@ var HexCoord = function(q,r) {
     };
 };
 
-module.exports = HexCoord;
+module.exports = Hex;

@@ -1,6 +1,8 @@
 __author__ = 'smahmud'
 
 
+
+
 #
 # mapIDs will be unique to every GridHex
 # it will identify its position in the map
@@ -30,7 +32,6 @@ class Terrain(object):
         if type not in Terrain.terrainSet:
             raise RuntimeError("Terrain does not exist!")
         self.type = type
-
 
 
 
