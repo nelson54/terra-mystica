@@ -6,6 +6,8 @@ var Hex = function(q,r) {
 
     this.terrainType = terrains.__BLANK;
 
+    this.building = null;
+
     this.getDirectionalCoord = function(dir) {
         if(dir == 0) {
             return {q: this.q + 1, r: this.r};

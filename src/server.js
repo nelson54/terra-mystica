@@ -27,7 +27,6 @@ var api = express();
 
 api.post('/game',function (req, res) {
     var game = makeGame(2);
-
     games[game.id] = game;
 
     res.type('application/json');
