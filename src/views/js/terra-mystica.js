@@ -54,7 +54,10 @@ game_state.main.prototype = {
 // Add and start the 'main' state to start the game
 game.state.add('main', game_state.main);
 
-jQuery.ajax('/api/game').then(function(response){
+var gameId = $('#terra-mystica').data('gameId');
+var playerId = $('#terra-mystica').data('playerId');
+
+jQuery.ajax('/api/game/'+ gameId).then(function(response){
     game.state.start('main');
     game_state = response;
 });
