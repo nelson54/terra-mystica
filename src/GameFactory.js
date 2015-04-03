@@ -1,7 +1,7 @@
 var _ = require('lodash');
 var Game = require('./Game');
 var World = require('./World');
-var HexCoord = require('./HexCoord');
+var Hex = require('./Hex');
 var Players = require('./Players');
 var Player = require('./Player');
 var terrains = require('./terrains');
@@ -19,7 +19,7 @@ module.exports.create = function(numberOfPlayers){
         var q = Math.floor(x / width);
         var r = x % width;
         console.log({q:q,r:r});
-        var coord = new HexCoord(q,r);
+        var coord = new Hex(q,r);
         coord.terrainType = terrains[_.shuffle(Object.keys(terrains))[0]];
         coords[x] = coord;
     }

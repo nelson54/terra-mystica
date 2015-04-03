@@ -3,33 +3,37 @@ var bodyParser = require('body-parser');
 
 var makeGame = require('./GameFactory').create;
 
-var app = express();
+// front sends client code
+var front = express();
 
-app.set('port', (process.env.PORT || 4000));
-app.set('views', __dirname+'/views');
-app.set('view engine', 'jade');
+front.set('port', (process.env.PORT || 4000));
+front.set('views', __dirname+'/views');
+front.set('view engine', 'jade');
 
+front.use(express.static(__dirname+'/../bower_components'));
+front.use(express.static(__dirname+'/../public'));
 
-app.use(express.static(__dirname+'/../bower_components'));
-app.use(express.static(__dirname+'/../public'));
+front.use(bodyParser.urlencoded({ extended: false })); // parse application/x-www-form-urlencoded
+front.use(bodyParser.json()); // parse application/json
 
-app.use(bodyParser.urlencoded({ extended: false })); // parse application/x-www-form-urlencoded
-app.use(bodyParser.json()); // parse application/json
-
-app.get('/api/game',function (req, res) {
-    res.setHeader('Content-Type', 'application/json');
-    res.end(JSON.stringify(makeGame(2)));
-});
-
-app.get('/', function (req, res) {
+front.get('/', function (req, res) {
     res.render('index');
 });
 
-var server = app.listen(app.get('port'), function () {
+// api
+var api = express();
+
+api.get('/game',function (req, res) {
+    res.type('application/json');
+    res.json(makeGame(2));
+});
+
+front.use('/api', api);
+
+var server = front.listen(front.get('port'), function () {
 
     var host = server.address().address;
     var port = server.address().port;
 
     console.log('Listening at http://%s:%s', host, port);
-
 });

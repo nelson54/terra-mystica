@@ -1,6 +1,6 @@
 var terrains = require('./terrains');
 
-var HexCoord = function(q,r) {
+var Hex = function(q,r) {
     this.q = q;
     this.r = r;
 
@@ -26,4 +26,4 @@ var HexCoord = function(q,r) {
     };
 };
 
-module.exports = HexCoord;
+module.exports = Hex;

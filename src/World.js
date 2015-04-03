@@ -1,10 +1,14 @@
-var World = function(width, height, coords){
+var World = function(width, height, hexs){
 
-    this.coords = coords;
+    this.hexs = hexs;
 
     this.width = width;
     this.height = height;
 
 };
+
+World.terrains = [
+
+];
 
 module.exports = World;
