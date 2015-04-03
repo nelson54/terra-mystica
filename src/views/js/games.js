@@ -3,7 +3,7 @@ $(function(){
         jQuery.ajax('/api/game', {
             method: "POST"
         }).then(function(response){
-            window.location = "/game/" + response.id;
+            window.location = "/games/" + response.id + '/players';
         })
     })
 });

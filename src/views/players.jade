@@ -1,10 +1,6 @@
 include ./base.jade
-    script type="text/javascript"
-        include ../../
-
-
-    button#create()
-
     ul.players
-        li
-            a(href="/game/")
+        each player in players
+            li
+                a(href="/game/"+game.id+"/players/"+player.id)= player.id
+

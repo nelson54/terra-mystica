@@ -1,3 +1,4 @@
+var _ = require('lodash');
 var express = require('express');
 var bodyParser = require('body-parser');
 
@@ -19,11 +20,12 @@ front.use(bodyParser.urlencoded({ extended: false })); // parse application/x-ww
 front.use(bodyParser.json()); // parse application/json
 
 front.get('/', function (req, res) {
-    res.render('games.jade');
+    res.render('games.jade', {games: _.values(games)});
 });
 
-front.get('/game/', function (req, res) {
-    res.render('game.jade');
+front.get('/games/:gameId/players', function (req, res) {
+    var game = games[req.params.gameId];
+    res.render('players.jade', {'game': game, 'players': game.players.getPlayers()});
 });
 
 // api
