@@ -34,8 +34,12 @@ api.post('/game',function (req, res) {
 });
 
 api.get('/game',function (req, res) {
+    //TODO this is super wrong.
+    var game = makeGame(2);
+    games[game.id] = game;
+
     res.type('application/json');
-    res.json(makeGame(2));
+    res.json(game);
 });
 
 api.get('/game/{id}',function (req, res) {
