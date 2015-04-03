@@ -5,8 +5,10 @@ var makeGame = require('./GameFactory').create;
 
 var app = express();
 
+app.set('port', (process.env.PORT || 3000));
 app.set('views', './views');
 app.set('view engine', 'jade');
+
 
 app.use(express.static('../bower_components'));
 app.use(express.static('../public'));
@@ -23,7 +25,7 @@ app.get('/', function (req, res) {
     res.render('index', { title: 'Hey', message: 'Hello there!'});
 });
 
-var server = app.listen(3000, function () {
+var server = app.listen(app.get('port'), function () {
 
     var host = server.address().address;
     var port = server.address().port;
