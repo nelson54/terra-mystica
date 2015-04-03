@@ -6,12 +6,12 @@ var makeGame = require('./GameFactory').create;
 var app = express();
 
 app.set('port', (process.env.PORT || 3000));
-app.set('views', './views');
+app.set('views', __dirname+'/views');
 app.set('view engine', 'jade');
 
 
-app.use(express.static('../bower_components'));
-app.use(express.static('../public'));
+app.use(express.static(__dirname+'/../bower_components'));
+app.use(express.static(__dirname+'/../public'));
 
 app.use(bodyParser.urlencoded({ extended: false })); // parse application/x-www-form-urlencoded
 app.use(bodyParser.json()); // parse application/json
