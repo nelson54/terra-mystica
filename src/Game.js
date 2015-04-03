@@ -1,4 +1,4 @@
-var gameUtils = require('gameUtils');
+var gameUtils = require('./gameUtils');
 
 var Game = function(players, world){
     this.id = gameUtils.makeId();

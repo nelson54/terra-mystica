@@ -15,8 +15,8 @@ module.exports.create = function(numberOfPlayers){
 
     for(var x = 0; x < numberOfCoords; x++){
         var q = Math.floor(x / width);
-        var r = Math.floor(x / height);
-
+        var r = x % width;
+        console.log({q:q,r:r});
         coords[x] = new HexCoord(q,r);
     }
 
