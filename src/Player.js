@@ -20,9 +20,35 @@ var Player = function(data){
         }
     };
 
-    this.gainPower = function(amount){
-
+    this.burnPower = function(amount){
+        var removeFromBowl1 = amount*2;
+        if(this.powerBowls[1] >= removeFromBowl1){
+            this.powerBowls[1] -= removeFromBowl1;
+            this.powerBowls[2] += amount;
+        }
     };
+
+    this.gainPower = function(amount){
+        var done = false;
+        var moved = 0;
+        while (!done){
+            done = this.movePowerFromLowestBowl() || moved === amount
+        }
+    };
+
+    this.movePowerFromLowestBowl = function(){
+        if(this.powerBowls[0] == 0 && this.pwoerBowls[1] == 0){
+            return false;
+        } else if(this.powerBowls[0] > 0){
+            this.powerBowls[0]--;
+            this.powerBowls[1]++;
+            return true;
+        } else {
+            this.powerBowls[1]--;
+            this.powerBowls[2]++;
+            return true;
+        }
+    }
 };
 
 module.exports = Player;
