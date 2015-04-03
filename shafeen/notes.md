@@ -30,3 +30,18 @@ River
 
 Map Factions
 ------------
+
+
+
+
+
+
+
+
+Player monitor
+--------------
+victory points
+power bowl status
+resource status
+cult board status
+income status
