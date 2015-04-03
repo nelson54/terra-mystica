@@ -21,7 +21,7 @@ function drawHex(coordinate, graphics){
     var center = normalizedHexCenter(coordinate);
     var c = hexCorners(center, defaultHexSize);
 
-    graphics.beginFill('0x'+coordinate.terrainType.color.toString(16));
+    graphics.beginFill(coordinate.terrainType.color);
     graphics.lineStyle(1, 0xffd900, 0);
     graphics.moveTo(c[0].x, c[0].y);
     graphics.lineTo(c[1].x, c[1].y);
@@ -44,7 +44,7 @@ game_state.main.prototype = {
 
     update: function() {
         var graphics = game.add.graphics(20,20);
-        game_state.world.coords.forEach(function(coord){
+        game_state.world.hexs.forEach(function(coord){
             drawHex(coord, graphics);
         });
     }

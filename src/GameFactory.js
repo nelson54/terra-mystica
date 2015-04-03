@@ -4,14 +4,13 @@ var World = require('./World');
 var Hex = require('./Hex');
 var Players = require('./Players');
 var Player = require('./Player');
-var terrains = require('./terrains');
 
 module.exports.create = function(numberOfPlayers){
     var height = 9;
     var width = 13;
 
     var players = new Players;
-    var coords = [];
+    var hexs = [];
 
     var numberOfCoords = height * width;
 
@@ -19,15 +18,16 @@ module.exports.create = function(numberOfPlayers){
         var q = Math.floor(x / width);
         var r = x % width;
         console.log({q:q,r:r});
-        var coord = new Hex(q,r);
-        coord.terrainType = terrains[_.shuffle(Object.keys(terrains))[0]];
-        coords[x] = coord;
+        var hex = new Hex(q,r);
+        hex.terrainType = World.terrains[x];
+        hexs[x] = hex;
     }
 
     for(var p = 0; p < numberOfPlayers; p++){
         players.addPlayer(new Player());
     }
-    var grid = new World(width, height, coords);
+
+    var grid = new World(width, height, hexs);
     return new Game(players, grid);
 };
 
