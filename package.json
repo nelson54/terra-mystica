@@ -3,8 +3,7 @@
   "version": "0.0.0",
   "description": "implementation of the Terra Mystica board game",
   "scripts": {
-    "start": "node src/server.js",
-    "postinstall": "./node_modules/bower/bin/bower install"
+    "start": "node src/server.js"
   },
   "repository": {
     "type": "git",
