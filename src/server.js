@@ -19,6 +19,10 @@ front.use(bodyParser.urlencoded({ extended: false })); // parse application/x-ww
 front.use(bodyParser.json()); // parse application/json
 
 front.get('/', function (req, res) {
+    res.render('games.jade');
+});
+
+front.get('/game/', function (req, res) {
     res.render('game.jade');
 });
 
