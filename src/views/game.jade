@@ -1,8 +1,12 @@
 include base.jade
-#terra-mystica(data-game-id=game.id)
+#terra-mystica(data-game-id=game.id, data-player-id=player.id)
+
+#player-area()
+    h3= player.id
 
 script(type="text/javascript", src="//cdnjs.cloudflare.com/ajax/libs/phaser/2.3.0/phaser.min.js")
 script(type="text/javascript")
     include js/hex.js
 script(type="text/javascript")
     include js/terra-mystica.js
+
