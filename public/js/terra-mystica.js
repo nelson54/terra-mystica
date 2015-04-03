@@ -40,13 +40,14 @@ game_state.main.prototype = {
     preload: function() {},
 
     create: function() {
-    },
-
-    update: function() {
         var graphics = game.add.graphics(20,20);
         game_state.world.hexs.forEach(function(coord){
             drawHex(coord, graphics);
         });
+    },
+
+    update: function() {
+
     }
 };
 
