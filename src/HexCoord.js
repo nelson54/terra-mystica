@@ -1,6 +1,10 @@
+var terrains = require('./terrains');
+
 var HexCoord = function(q,r) {
     this.q = q;
     this.r = r;
+
+    this.terrainType = terrains.__BLANK;
 
     this.getDirectionalCoord = function(dir) {
         if(dir == 0) {

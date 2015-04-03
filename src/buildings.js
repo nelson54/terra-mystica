@@ -31,7 +31,7 @@ Buildings.prototype.getAtPos = function() {
 	return null;
 };
 
-Buildings.prototype.indexOfPos() {
+Buildings.prototype.indexOfPos = function(){
 	var q, r, list = this.list;
 	
 	if(arguments.length == 2) {
