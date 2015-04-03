@@ -1,6 +1,6 @@
 include ./base.jade
-    ul.players
-        each player in players
-            li
-                a(href="/game/"+game.id+"/players/"+player.id)= player.id
+ul
+    each player in game.players.getPlayers()
+        li
+            a(href="/game/"+game.id+"/players/"+player.id)=player.id
 

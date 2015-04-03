@@ -25,7 +25,7 @@ front.get('/', function (req, res) {
 
 front.get('/games/:gameId/players', function (req, res) {
     var game = games[req.params.gameId];
-    res.render('players.jade', {'game': game, 'players': game.players.getPlayers()});
+    res.render('players.jade', {game: game});
 });
 
 // api
