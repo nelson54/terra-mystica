@@ -15,6 +15,8 @@ __author__ = 'smahmud'
 # Note that any of the items above can be 0
 # Example -  gold Resource Bundle
 # r = ResourceBundleBuilder.initNewBundle().setGold(1).build()
+#
+# see __test__() below for some more sample usage
 
 
 # user should not try to modify this object after
