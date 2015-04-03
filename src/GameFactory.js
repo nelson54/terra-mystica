@@ -4,6 +4,7 @@ var World = require('./World');
 var Hex = require('./Hex');
 var Players = require('./Players');
 var Player = require('./Player');
+var Buildings = require('./buildings');
 
 module.exports.create = function(numberOfPlayers){
     var height = 9;
@@ -28,6 +29,8 @@ module.exports.create = function(numberOfPlayers){
     }
 
     var grid = new World(width, height, hexs);
-    return new Game(players, grid);
+
+    var buildings = new Buildings(players, grid);
+    return new Game(players, grid, buildings);
 };
 
