@@ -97,6 +97,15 @@ api.get('/game/:gameId/players/:playerId',function (req, res) {
     res.json(req.player);
 });
 
+api.post('/game/:gameId/players/:playerId/execute',function (req, res) {
+    var game = games[req.params.gameId];
+
+    game.endCurrentTurn();
+
+    res.type('application/json');
+    res.json(games[req.params.gameId].players.players[req.params.playerId]);
+});
+
 api.post('/game/:gameId/players/:playerId/shovel-track', function(req, res){
     req.player.upgradeShovelTrack();
     res.json();
