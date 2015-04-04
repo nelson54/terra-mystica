@@ -4,6 +4,7 @@ var gameUtils = require('./gameUtils');
 var Player = function(data){
     this.id = gameUtils.makeId();
     this.passed = false;
+    this.points = 20;
     _.merge(this, data);
 
     this.upgradeShippingTrack = function(){
@@ -18,6 +19,11 @@ var Player = function(data){
         if(shovel.current < shovel.max){
             shovel.current++;
         }
+    };
+
+    this.leechPower = function(amount){
+        this.points -= amount;
+        this.gainPower(amount);
     };
 
     this.burnPower = function(amount){

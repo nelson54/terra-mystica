@@ -22,12 +22,15 @@
 	}
 
 	GameState.prototype.createHexTexture = function(key, color) {
-		var game = this.game;
-		var texture = game.add.renderTexture(40, 40, key);
-		var graphics = game.make.graphics(40, 40);
+		var size = 64;
+		var radius = size/2;
 
-		hexSize(20);
-		var c = hexVertices({x: 20, y: 20});
+		var game = this.game;
+		var texture = game.add.renderTexture(size, size, key);
+		var graphics = game.make.graphics(size, size);
+
+		hexSize(radius);
+		var c = hexVertices({x: radius, y: radius});
 		graphics.beginFill(color);
 		graphics.lineStyle(1, 0xffd900, 0);
 		graphics.moveTo(c[0].x, c[0].y);
@@ -49,7 +52,7 @@
 		var texture = this.textures[hex.terrainType.value];
 
 		this.add.sprite(pos.x, pos.y, texture);
-	}
+	};
 
 	globals.GameState = GameState;
 })(this);
