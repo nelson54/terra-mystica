@@ -1,6 +1,10 @@
 include base.jade
 #terra-mystica(data-game-id=game.id, data-player-id=player.id)
 
+#game
+    p
+        strong current player:
+        span= game.currentPlayerId
 #player-area()
     h3= player.id
 
@@ -9,6 +13,9 @@ include base.jade
         button#build Build
         button#shovelTrack Upgrade shovel track
         button#shippingTrack Upgrade shipping track
+        button#gainPower Gain power
+        button#burnPower Burn power
+        button#endTurn Turn
 
     ul#resources
         each amount, type in player.resources

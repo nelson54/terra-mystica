@@ -68,6 +68,19 @@ api.get('/game/:gameId/players/:playerId',function (req, res) {
     res.json(games[req.params.gameId].players.players[req.params.playerId]);
 });
 
+api.post('/game/:gameId/players/:playerId/execute',function (req, res) {
+    var game = games[req.params.gameId];
+    for(var action in req.body.actions ){
+
+        if(action.type === 'END_TURN'){
+            game.endCurrentTurn();
+        }
+    }
+
+    res.type('application/json');
+    res.json(games[req.params.gameId].players.players[req.params.playerId]);
+});
+
 api.post('/game/:gameId/players/:playerId/shovel-track', function(req, res){
     var game = games[req.params.gameId];
     var player = game.players.getPlayer(req.params.playerId);

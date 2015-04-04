@@ -42,4 +42,24 @@ $(function(){
 
         });
     });
+
+    $('#gainPower').on('click', function(e){
+        jQuery.post(api+'/gainPower').then(function(){
+
+        });
+    });
+
+    $('#gainPower').on('click', function(e){
+        jQuery.post(api+'/burnPower').then(function(){
+
+        });
+    });
+
+    $('#endTurn').on('click', function(e){
+        var data = {actions: [{type: 'END_TURN'}]};
+
+        jQuery.post(api+'/execute', data).then(function(){
+
+        });
+    });
 });
