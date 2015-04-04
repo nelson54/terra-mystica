@@ -25,7 +25,9 @@ var Player = function(data){
         if(this.powerBowls[1] >= removeFromBowl1){
             this.powerBowls[1] -= removeFromBowl1;
             this.powerBowls[2] += amount;
+            return true;
         }
+        return false;
     };
 
     this.gainPower = function(amount){
