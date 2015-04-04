@@ -69,7 +69,7 @@ $(function(){
 
     $('#pass').on('click', function(e){
 
-        jQuery.post(api+'/pass', data).then(function(){
+        jQuery.post(api+'/pass').then(function(){
             window.location.reload(true);
         });
     });
