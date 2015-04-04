@@ -2,24 +2,24 @@ var _ = require('lodash');
 var parse = require('./parse');
 var accumulate = require('../util/accumulate');
 
-module.exports = Resource;
+module.exports = Resources;
 
-function Resource(hashOrString) {
+function Resources(hashOrString) {
 	resource(hashOrString || emptyResources, this);
 }
 
-Resource.prototype.add = function(value) {
+Resources.prototype.add = function(value) {
 	var augmend = resource(value);
-	return accumulate(new Resource(this), augmend);
+	return accumulate(new Resources(this), augmend);
 };
 
-Resource.prototype.subtract = function(vale) {
+Resources.prototype.subtract = function(vale) {
 	var subtrahend = resource(value);
-	return accumulate(new Resource(this), subtrahend);
+	return accumulate(new Resources(this), subtrahend);
 };
 
-Resource.prototype.negate = function() {
-	return negate(new Resource(this));
+Resources.prototype.negate = function() {
+	return negate(new Resources(this));
 };
 
 var emptyResources = {
