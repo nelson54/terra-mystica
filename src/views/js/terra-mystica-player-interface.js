@@ -51,15 +51,19 @@ $(function(){
 
     $('#gainPower').on('click', function(e){
         jQuery.post(api+'/burnPower').then(function(){
-
+            window.location.reload(true);
         });
     });
 
     $('#endTurn').on('click', function(e){
-        var data = {actions: [{type: 'END_TURN'}]};
+        var data = {
+            contentType:'application/json; charset=utf-8',
+            data: JSON.stringify({actions: [{type: 'END_TURN'}]}),
+            processData: false
+        };
 
         jQuery.post(api+'/execute', data).then(function(){
-
+            window.location.reload(true);
         });
     });
 });

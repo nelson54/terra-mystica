@@ -70,12 +70,8 @@ api.get('/game/:gameId/players/:playerId',function (req, res) {
 
 api.post('/game/:gameId/players/:playerId/execute',function (req, res) {
     var game = games[req.params.gameId];
-    for(var action in req.body.actions ){
 
-        if(action.type === 'END_TURN'){
-            game.endCurrentTurn();
-        }
-    }
+    game.endCurrentTurn();
 
     res.type('application/json');
     res.json(games[req.params.gameId].players.players[req.params.playerId]);

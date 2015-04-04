@@ -20,10 +20,10 @@ var Players = function () {
         var pos = this.turnOrder.indexOf(id)+1;
         if(pos === -1){
             throw "That player is not in turn order";
-        } else if (pos > turnOrder.length){
-            return turnOrder[0];
+        } else if (pos >= this.turnOrder.length){
+            return this.turnOrder[0];
         } else {
-            return turnOrder[pos];
+            return this.turnOrder[pos];
         }
 
     }
