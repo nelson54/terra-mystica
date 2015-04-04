@@ -10,7 +10,9 @@ include base.jade
         span= game.rounds
 #player-area()
     h3= player.id
-
+    p
+        strong Passed
+        span= player.passed
     #controls
         button#dig Terraform
         button#build Build
@@ -40,7 +42,7 @@ include base.jade
             strong= shovel.upgradeCost
 
 
-script(type="text/javascript", src="//cdnjs.cloudflare.com/ajax/libs/phaser/2.3.0/phaser.min.js")
+script(type="text/javascript", src="/phaser/build/phaser.min.js")
 script(type="text/javascript")
     include js/hex.js
 script(type="text/javascript")

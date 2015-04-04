@@ -18,8 +18,8 @@ var Game = function(players, world, buildings){
     };
 
     this.isEndOfRound = function(){
-        this.players.getPlayers()
-            .reduce(function(b, b1){return b&&b1}, true)
+        return this.players.getPlayers()
+            .reduce(function(b, b1){return b&&b1.passed}, true)
     }
 };
 
