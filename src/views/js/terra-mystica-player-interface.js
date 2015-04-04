@@ -66,4 +66,11 @@ $(function(){
             window.location.reload(true);
         });
     });
+
+    $('#pass').on('click', function(e){
+
+        jQuery.post(api+'/pass', data).then(function(){
+            window.location.reload(true);
+        });
+    });
 });

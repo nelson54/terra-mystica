@@ -25,7 +25,6 @@ var Players = function () {
         } else {
             return this.turnOrder[pos];
         }
-
     };
 
     this.resetPlayersForRound = function(){

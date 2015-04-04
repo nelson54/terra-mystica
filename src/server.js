@@ -116,9 +116,10 @@ api.post('/game/:gameId/players/:playerId/pass', function(req, res){
     var player = game.players.getPlayer(req.params.playerId);
 
     player.passed = true;
+    game.endCurrentTurn();
 
     res.type('application/json');
-    res.json();
+    res.json(game);
 });
 
 api.post('/game/:gameId/players/:playerId/shipping-track', function(req, res){
