@@ -15,7 +15,7 @@
 			this.createHexTexture('mountain-hex', '0x9E9E9E'),
 			this.createHexTexture('wasteland-hex', '0xC76D6D'),
 			this.createHexTexture('desert-hex', '0xC9C547'),
-			this.createHexTexture('water-hex', '0x70A3C4'),
+			this.createHexTexture('water-hex', '0xFFFFFF'),
 		];
 
 		this.hexes.forEach(this.createHex, this);	
@@ -32,7 +32,7 @@
 		hexSize(radius);
 		var c = hexVertices({x: radius, y: radius});
 		graphics.beginFill(color);
-		graphics.lineStyle(1, 0xffd900, 0);
+		graphics.lineStyle(0, 0xffd900, 0);
 		graphics.moveTo(c[0].x, c[0].y);
 		graphics.lineTo(c[1].x, c[1].y);
 		graphics.lineTo(c[2].x, c[2].y);
