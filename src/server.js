@@ -87,6 +87,16 @@ api.post('/game/:gameId/players/:playerId/shovel-track', function(req, res){
     res.json();
 });
 
+api.post('/game/:gameId/players/:playerId/pass', function(req, res){
+    var game = games[req.params.gameId];
+    var player = game.players.getPlayer(req.params.playerId);
+
+    player.passed = true;
+
+    res.type('application/json');
+    res.json();
+});
+
 api.post('/game/:gameId/players/:playerId/shipping-track', function(req, res){
     res.type('application/json');
     res.json(games[req.params.id]);

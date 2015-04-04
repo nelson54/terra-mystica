@@ -3,7 +3,7 @@ var gameUtils = require('./gameUtils');
 
 var Player = function(data){
     this.id = gameUtils.makeId();
-
+    this.passed = false;
     _.merge(this, data);
 
     this.upgradeShippingTrack = function(){
@@ -50,6 +50,10 @@ var Player = function(data){
             this.powerBowls[2]++;
             return true;
         }
+    }
+
+    this.resetPlayerForRound = function(){
+        this.passed = false;
     }
 };
 

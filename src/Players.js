@@ -26,6 +26,12 @@ var Players = function () {
             return this.turnOrder[pos];
         }
 
+    };
+
+    this.resetPlayersForRound = function(){
+        for(var id in this.players){
+            this.players[id].resetPlayerForRound();
+        }
     }
 };
 
