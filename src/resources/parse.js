@@ -1,9 +1,9 @@
-var validator = /^(?:\d+\s*(?:w|p|g|pw)\s*)+$/;
-var expr = /(\d+)\s*(w|p|g|pw)\s*/g;
+var validator = /^(?:\d+\s*(?:w|p|c|pw)\s*)+$/;
+var expr = /(\d+)\s*(w|p|c|pw)\s*/g;
 var codeToType = {
 	w: 'workers',
 	p: 'priests',
-	g: 'gold',
+	c: 'coins',
 	pw: 'power'
 };
 
@@ -14,7 +14,7 @@ function parseResourceString(str) {
 	var match, amount, code, type;
 	var accumulator = {
 		workers: 0,
-		gold: 0,
+		coin: 0,
 		priests: 0,
 		power: 0
 	};
