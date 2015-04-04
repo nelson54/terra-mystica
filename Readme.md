@@ -10,7 +10,7 @@ We have lots of work to do.
 [] Select turn bonus tiles
 [x] Render map
 [] Income phase
-[x] Turns 
+[x] Turns
 [x] Rounds
 [x] End game
 [] Add/upgrade buildings
@@ -20,4 +20,4 @@ We have lots of work to do.
 [x] Power bowls
 [] Handle costs
 [] Handle cities and city bonus tiles
-[] Stack commands and roll back on the client side
+[] Stack commands and roll back on the client side   
