@@ -1,13 +1,20 @@
 var _ = require('lodash');
 var express = require('express');
 var bodyParser = require('body-parser');
-
 var makeGame = require('./GameFactory').create;
+var CommandFacade = require('./CommandFacade');
 
 // front sends client code
 var front = express();
 
 var games = {};
+
+var commandFacadeProvider = function(gameId, playerId){
+    var game = games[gameId];
+    var player = game.players.getPlayer(playerId);
+
+    return new CommandFacade(game, player);
+};
 
 front.set('port', (process.env.PORT || 4000));
 front.set('views', __dirname+'/views');
@@ -39,6 +46,7 @@ front.param('gameId', function (req, res, next, id) {
 front.param('playerId', function(req, res, next, id) {
 	var players = req.game.players;
 	req.player = req.locals.player = players.getPlayer(id);
+
 	next();
 });
 
@@ -69,8 +77,10 @@ api.param('gameId', function(req, res, next, id) {
 
 api.param('playerId', function(req, res, next, id) {
 	var game = req.game;
-	if(!!game) 
-		req.player = game.players.getPlayer(id);
+	if(!!game) {
+        req.player = game.players.getPlayer(id);
+        req.context = new CommandFacade(req.game, req.player);
+    }
 	next();	
 });
 
@@ -108,22 +118,18 @@ api.post('/game/:gameId/players/:playerId/execute',function (req, res) {
 
 api.post('/game/:gameId/players/:playerId/shovel-track', function(req, res){
     req.player.upgradeShovelTrack();
-    res.json();
+    res.json(req.game);
 });
 
 api.post('/game/:gameId/players/:playerId/pass', function(req, res){
-    var game = games[req.params.gameId];
-    var player = game.players.getPlayer(req.params.playerId);
-
-    player.passed = true;
-    game.endCurrentTurn();
+    req.context.endTurn();
 
     res.type('application/json');
-    res.json(game);
+    res.json(req.game);
 });
 
 api.post('/game/:gameId/players/:playerId/shipping-track', function(req, res){
-    res.json();
+    req.context.upgradeShippingTrack();
 });
 
 front.use('/api', api);

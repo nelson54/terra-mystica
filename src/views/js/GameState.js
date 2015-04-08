@@ -7,6 +7,7 @@
 	GameState.prototype.constructor = GameState;
 
 	GameState.prototype.create = function() {
+		this.map = this.add.group(this, 'map', true);
 		this.textures = [
 			this.createHexTexture('plains-hex', '0xB5955B'),
 			this.createHexTexture('swamp-hex', '0x424242'),
@@ -19,7 +20,11 @@
 		];
 
 		this.hexes.forEach(this.createHex, this);	
-	}
+	};
+
+	GameState.prototype.update = function(){
+
+	};
 
 	GameState.prototype.createHexTexture = function(key, color) {
 		var size = 64;
@@ -51,7 +56,11 @@
 		var pos = hex2pos(hex.q, hex.r);
 		var texture = this.textures[hex.terrainType.value];
 
-		this.add.sprite(pos.x, pos.y, texture);
+		var sprite = this.add.sprite(pos.x, pos.y, texture);
+
+		sprite.inputEnabled = true;
+
+
 	};
 
 	globals.GameState = GameState;
