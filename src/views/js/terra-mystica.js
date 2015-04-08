@@ -1,5 +1,7 @@
 // Initialize Phaser, and creates a 400x490px game
 var game = new Phaser.Game(900, 600, Phaser.AUTO, 'terra-mystica');
+game.transparent = true;
+
 var game_state = new GameState();
 
 // Add and start the 'main' state to start the game
