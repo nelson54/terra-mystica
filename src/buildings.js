@@ -84,9 +84,6 @@ Buildings.prototype.putAt = function(owner, type, pos) {
 	list.push(newBuilding);	
 };
 
-
-
-
 /*
 { 
 	position: { q: 0, r: 0 },
