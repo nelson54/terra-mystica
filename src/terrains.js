@@ -1,4 +1,6 @@
-module.exports = terrains = {
+var _ = require('lodash');
+
+var terrains = {
     'PLAINS': {
         value : 0,
         color: '0xB5955B'
@@ -36,3 +38,17 @@ module.exports = terrains = {
         color: '0xf'
     }
 };
+
+terrains.getTerrainByValue = function(val){
+    var ts = _.filter(terrains, function(t){
+        return t.value == val;
+    });
+
+    if(ts.length === 1){
+        return ts[0];
+    } else if (ts.length > 1){
+        return ts;
+    } else return null;
+};
+
+module.exports = terrains;

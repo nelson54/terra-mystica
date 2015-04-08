@@ -121,6 +121,15 @@ api.post('/game/:gameId/players/:playerId/shovel-track', function(req, res){
     res.json(req.game);
 });
 
+api.post('/game/:gameId/players/:playerId/dig', function(req, res){
+    var game = games[req.params.gameId];
+    var q = parseInt(req.body['dig[q]']);
+    var r = parseInt(req.body['dig[r]']);
+    var cost = parseInt(req.body.spades);
+    game.world.dig(cost, q, r);
+    res.json(game);
+});
+
 api.post('/game/:gameId/players/:playerId/pass', function(req, res){
     req.context.endTurn();
 

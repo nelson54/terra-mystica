@@ -17,6 +17,24 @@ var World = function(width, height, hexs){
     this.width = width;
     this.height = height;
 
+    this.getHexByCoord = function(q, r) {
+        var arrayPos = q * this.width + r;
+        return this.hexs[arrayPos];
+    };
+    this.dig = function(distance, q, r) {
+        var hex = this.getHexByCoord(q, r);
+        hex.terrainType = this.getTerrainTypeByCost(distance, hex);
+    };
+    this.getTerrainTypeByCost = function(distance, hex) {
+        var terrainNumber = hex.terrainType['value'] + distance;
+        if(terrainNumber < 0) {
+            terrainNumber = 7 + terrainNumber;
+        } else if(terrainNumber > 7) {
+            terrainNumber = terrainNumber - 7;
+        }
+
+        return t.getTerrainByValue(terrainNumber);
+    };
 };
 
 World.terrains = [

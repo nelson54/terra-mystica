@@ -16,8 +16,8 @@ $(function(){
 
         jQuery.ajax(api+'/dig', {data: data, method: 'post'})
             .then(function(response){
-
-            })
+                window.location.reload();
+            });
     });
 
     $('#build').on('click', function(e){
