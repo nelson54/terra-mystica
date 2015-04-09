@@ -77,7 +77,7 @@ Buildings.prototype.putAt = function(owner, type, pos) {
 	var newBuilding = {
 			owner: owner,
 			type: type,
-			pos: _.copy(pos)
+			pos: _.cloneDeep(pos)
 		};
 
 	this.removeAt(pos);
