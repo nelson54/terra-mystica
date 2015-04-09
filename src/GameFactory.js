@@ -5,6 +5,7 @@ var Hex = require('./Hex');
 var Players = require('./Players');
 var Player = require('./Player');
 var Buildings = require('./buildings');
+var terrains = require('./terrains')
 
 //TODO really doesn't go here
 // #shame
@@ -53,6 +54,16 @@ function randomizeFaction(game) {
 	
 	var choice = _.sample(game.factions.listAvailable());
 	var executor = commandExecutor(game);
+    var player = game.getCurrentPlayer();
+    var terrainName = game.factions.get(choice).homeTerrain;
+    var terrain = terrains[terrainName];
+    var hex = findFirstOfType(game, terrain.value);
+	executor.execute(player, command().selectFaction(choice).build('DWELLING', hex.q, hex.r));
+}
 
-	executor.execute(game.currentPlayerId, command().selectFaction(choice));
+function findFirstOfType(game, typeValue){
+    return _.chain(game.world.hexs)
+        .filter(function(hex){return hex.terrainType.value == typeValue})
+        .first()
+        .value();
 }
