@@ -31,7 +31,11 @@ Command.prototype.pass = function() { //TODO select a bonus tile for next round
 
 
 Command.prototype.build = function(building, q, r){
-	return new Command(this.actions, { type : 'build', building : building, q: q, r: r})
+	return new Command(this.actions, { type : 'build', building : building, q: q, r: r});
+};
+
+Command.prototype.upgrade = function(q, r){
+	return new Command(this.actions, { type : 'upgrade', q: q, r: r});
 };
 
 Command.prototype.advanceSpadeTrack = function() {

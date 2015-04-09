@@ -131,6 +131,11 @@ api.post('/game/:gameId/players/:playerId/build', function(req, res){
     res.json(req.game);
 });
 
+api.post('/game/:gameId/players/:playerId/upgrade', function(req, res){
+    req.exec(req.player, command().upgrade(req.body.q, req.body.r));
+    res.json(req.game);
+});
+
 front.use('/api', api);
 
 var server = front.listen(front.get('port'), function () {

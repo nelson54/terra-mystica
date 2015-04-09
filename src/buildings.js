@@ -46,8 +46,8 @@ Buildings.prototype.indexOfPos = function() {
 
 	for(var i=0; i < list.length; i++) {
 		var building = list[i];
-		if(q === building.position.q &&
-		   r === building.position.r) 
+		if(q === building.pos.q &&
+		   r === building.pos.r)
 		{
 			return i;
 		}
@@ -79,9 +79,19 @@ Buildings.prototype.putAt = function(owner, type, q, r) {
 			type: type,
 			pos: {q: q, r: r}
 		};
-	//TODO removeAt is broken when there is more than one item in list
-	//this.removeAt(q, r);
+
+	this.removeAt(q, r);
 	list.push(newBuilding);	
+};
+
+Buildings.prototype.upgrade = function(q, r) {
+	var index = this.indexOfPos(q, r);
+	var building = this.list[index];
+	if(building.type == 'DWELLING') {
+		building.type = 'TRADINGPOST';
+	} else if(building.type == 'TRADINGPOST') {
+		building.type = 'STRONGHOLD'
+	}
 };
 
 /*

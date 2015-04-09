@@ -4,6 +4,7 @@ var executors = {
 	'burn' : require('./actions/burn'),
 	'pass' : require('./actions/pass'),
 	'build' : require('./actions/build'),
+	'upgrade' : require('./actions/upgrade'),
 	'advance shipping' : require('./actions/advanceShippingTrack'),
 	'advance spades' : require('./actions/advanceSpadeTrack'),
 	'transform' : require('./actions/transform'),
