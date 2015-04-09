@@ -50,7 +50,7 @@ $(function(){
             contentType: 'application/json',
             data: JSON.stringify(data)
         }).then(function(response){
-
+            location.reload();
         })
     });
 
