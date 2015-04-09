@@ -81,4 +81,5 @@
 	globals.hexSize = hexSizeProperty;
 	globals.hex2pos = hex2pos;
 	globals.hexVertices = hexVertices;
+	globals.pixel2hex = pixel2hex;
 })(this);
