@@ -1,5 +1,13 @@
 var gameUtils = require('./gameUtils');
 
+/*
+ * Phases:
+ *		SELECT_FACTION
+ *		PLACE_DWELLINGS
+ *		PLAY
+ *		GAME_OVER
+ */
+
 var Game = function(players, world, buildings){
     this.id = gameUtils.makeId();
     this.phase = "PLAY";
@@ -8,6 +16,7 @@ var Game = function(players, world, buildings){
     this.world = world;
     this.players = players;
     this.buildings = buildings;
+	this.history = [];
 
     this.endCurrentTurn = function(){
         if(this.isEndOfGame()){
