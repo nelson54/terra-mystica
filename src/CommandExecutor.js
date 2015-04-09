@@ -1,3 +1,4 @@
+var err = require('./actions/util/error');
 
 var executors = {
 	'burn' : require('./actions/burn'),
@@ -41,10 +42,8 @@ function commandExecutor(game) {
 	function getPlayer(playerId) {
 		var player = game.players.getPlayer(playerId);		
 		if(!!player) {
-			throw {
-				type: 'PLAYER_NOT_FOUND',
-				msg: 'Player "' + playerId + '" does not exist!'
-			};
+			var msg = 'Player "' + playerId + '" does not exist!';
+			err('PLAYER_NOT_FOUND', msg);
 		}
 
 		return player;

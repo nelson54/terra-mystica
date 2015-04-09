@@ -25,7 +25,7 @@ module.exports.create = function(numberOfPlayers, randomize) {
     for(var x = 0; x < numberOfCoords; x++){
         var q = Math.floor(x / width);
         var r = x % width;
-        console.log({q:q,r:r});
+        //console.log({q:q,r:r});
         var hex = new Hex(q,r);
         hex.terrainType = World.terrains[x];
         hexs[x] = hex;
@@ -40,7 +40,7 @@ module.exports.create = function(numberOfPlayers, randomize) {
     var buildings = new Buildings(players, grid);
 	var game = new Game(players, grid, buildings);
 
-	game.startFactionSelect();
+	game.next();
 	if(randomize) {
 		_.times(numberOfPlayers, _.partial(randomizeFaction, game) );
 	}
@@ -49,7 +49,7 @@ module.exports.create = function(numberOfPlayers, randomize) {
 };
 
 function randomizeFaction(game) {
-	actionAssert.phase(game, 'FACTION_SELECT');	
+	//actionAssert.phase(game, 'FACTION_SELECT');	
 	
 	var choice = _.sample(game.factions.listAvailable());
 	var executor = commandExecutor(game);
