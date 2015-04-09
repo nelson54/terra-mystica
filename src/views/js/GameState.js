@@ -57,8 +57,12 @@
 	};
 
 	GameState.prototype.preload = function(){
-		//TODO add new textures here
 		this.load.image('building','/public/images/building.png');
+		this.load.image('DWELLING','/public/images/dwelling.png');
+		this.load.image('TRADINGPOST','/public/images/trading-post.png');
+		this.load.image('STRONGHOLD','/public/images/stronghold.png');
+		this.load.image('TEMPLE','/public/images/temple.png');
+		this.load.image('SANCTUARY','/public/images/sanctuary.png');
 	};
 
 	GameState.prototype.createHexTexture = function(key, color) {
