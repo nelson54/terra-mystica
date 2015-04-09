@@ -49,7 +49,7 @@ module.exports.create = function(numberOfPlayers, randomize) {
 };
 
 function randomizeFaction(game) {
-	actionAssert.phase(game, 'FACTION_SELECT');	
+	//actionAssert.phase(game, 'FACTION_SELECT');
 	
 	var choice = _.sample(game.factions.listAvailable());
 	var executor = commandExecutor(game);
