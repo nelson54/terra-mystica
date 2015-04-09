@@ -46,8 +46,8 @@ Buildings.prototype.indexOfPos = function() {
 
 	for(var i=0; i < list.length; i++) {
 		var building = list[i];
-		if(q === building.position.q &&
-		   r === building.position.r) 
+		if(q === building.pos.q &&
+		   r === building.pos.r)
 		{
 			return i;
 		}

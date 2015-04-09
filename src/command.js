@@ -34,7 +34,7 @@ Command.prototype.build = function(building, q, r){
 	return new Command(this.actions, { type : 'build', building : building, q: q, r: r});
 };
 
-Command.prototype.upgrade = function(building, q, r){
+Command.prototype.upgrade = function(q, r){
 	return new Command(this.actions, { type : 'upgrade', q: q, r: r});
 };
 
