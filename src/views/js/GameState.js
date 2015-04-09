@@ -6,6 +6,12 @@
 	GameState.prototype = Object.create(Phaser.State.prototype);
 	GameState.prototype.constructor = GameState;
 
+	GameState.prototype.addBuildingToHex = function(building){
+		var pos = hex2pos(building.pos.q, building.pos.r);
+		var sprite = this.add.sprite(pos.x + 15, pos.y + 15, 'building');
+		sprite.anchor.setTo();
+	};
+
 	GameState.prototype.create = function() {
 		this.map = this.add.group(this, 'map', true);
 		this.textures = [
@@ -19,11 +25,17 @@
 			this.createHexTexture('water-hex', '0xFFFFFF'),
 		];
 
-		this.hexes.forEach(this.createHex, this);	
+		this.hexes.forEach(this.createHex, this);
+		this.buildings.list.forEach(this.addBuildingToHex, this);
+		this.addBuildingToHex({pos:{q:5,r:5}});
 	};
 
 	GameState.prototype.update = function(){
 
+	};
+
+	GameState.prototype.preload = function(){
+		this.load.image('building','/public/images/building.png');
 	};
 
 	GameState.prototype.createHexTexture = function(key, color) {
