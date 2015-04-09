@@ -123,7 +123,12 @@ api.post('/game/:gameId/players/:playerId/shipping-track', function(req, res){
 });
 
 api.post('/game/:gameId/players/:playerId/shovel-track', function(req, res){
-    req.exec(req.player, command().advanceShovelTrack());
+    req.exec(req.player, command().advanceSpadeTrack());
+    res.json(req.game);
+});
+
+api.post('/game/:gameId/players/:playerId/build', function(req, res){
+    req.exec(req.player, command().build('DWELLING', req.body.q, req.body.r));
     res.json(req.game);
 });
 

@@ -5,7 +5,6 @@ var Hex = require('./Hex');
 var Players = require('./Players');
 var Player = require('./Player');
 var Buildings = require('./buildings');
-var witch = require('./factions/witches');
 
 module.exports.create = function(numberOfPlayers){
     var height = 9;
@@ -26,7 +25,7 @@ module.exports.create = function(numberOfPlayers){
     }
 
     for(var p = 0; p < numberOfPlayers; p++){
-        players.addPlayer(new Player(witch()));
+        players.addPlayer(new Player());
     }
 
     var grid = new World(width, height, hexs);

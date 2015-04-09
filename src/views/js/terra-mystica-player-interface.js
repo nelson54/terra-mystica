@@ -26,7 +26,8 @@ $(function(){
 
     $('#build').on('click', function(e){
         var data = {
-            upgrade: hex
+            q: hex.q,
+            r: hex.r
         };
 
         $.ajax({url: api+'/build',
@@ -39,14 +40,14 @@ $(function(){
     });
 
     $('#shovelTrack').on('click', function(e){
-        $.ajax({url:api+'/shovel-track'}).then(function(){
-
+        $.ajax({url:api+'/shovel-track', method:'post'}).then(function(){
+            location.reload();
         })
     });
 
     $('#shippingTrack').on('click', function(e){
-        $.ajax({url: api+'/shipping-track'}).then(function(){
-
+        $.ajax({url: api+'/shipping-track', method:'post'}).then(function(){
+            location.reload();
         });
     });
 
