@@ -31,7 +31,7 @@ Buildings.prototype.getAtPos = function() {
 	return null;
 };
 
-Buildings.prototype.indexOfPos = function(){
+Buildings.prototype.indexOfPos = function() {
 	var q, r, list = this.list;
 	
 	if(arguments.length == 2) {
@@ -83,9 +83,6 @@ Buildings.prototype.putAt = function(owner, type, pos) {
 	this.removeAt(pos);
 	list.push(newBuilding);	
 };
-
-
-
 
 /*
 { 

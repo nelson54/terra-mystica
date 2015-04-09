@@ -10,12 +10,16 @@ $(function(){
 
     $('#dig').on('click', function(e){
         var data = {
-            dig: hex,
-            spades: -1
+            q: hex.q,
+            r: hex.r,
+            distance: -1
         };
 
-        jQuery.ajax(api+'/dig', {data: data, method: 'post'})
-            .then(function(response){
+        $.ajax({url: api+'/dig',
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify(data)
+        }).then(function(response){
                 window.location.reload();
             });
     });
@@ -25,51 +29,63 @@ $(function(){
             upgrade: hex
         };
 
-        jQuery.ajax(api+'/build', {data: data, method: 'post'})
-            .then(function(response){
+        $.ajax({url: api+'/build',
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify(data)
+        }).then(function(response){
 
             })
     });
 
     $('#shovelTrack').on('click', function(e){
-        jQuery.post(api+'/shovel-track').then(function(){
+        $.ajax({url:api+'/shovel-track'}).then(function(){
 
         })
     });
 
     $('#shippingTrack').on('click', function(e){
-        jQuery.post(api+'/shipping-track').then(function(){
+        $.ajax({url: api+'/shipping-track'}).then(function(){
 
         });
     });
 
     $('#gainPower').on('click', function(e){
-        jQuery.post(api+'/gainPower').then(function(){
+        $.ajax({url: api+'/gainPower'}).then(function(){
 
         });
     });
 
     $('#gainPower').on('click', function(e){
-        jQuery.post(api+'/burnPower').then(function(){
+        $.ajax({url:api+'/burnPower'}).then(function(){
             window.location.reload(true);
         });
     });
 
     $('#endTurn').on('click', function(e){
         var data = {
-            contentType:'application/json; charset=utf-8',
-            data: JSON.stringify({actions: [{type: 'END_TURN'}]}),
-            processData: false
+            data: {actions: [{type: 'END_TURN'}]}
         };
 
-        jQuery.post(api+'/execute', data).then(function(){
+        $.ajax({url: api+'/execute',
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify(data)
+        }).then(function(){
             window.location.reload(true);
         });
     });
 
     $('#pass').on('click', function(e){
+        var data = {
+            data: {actions: [{type: 'END_TURN'}]}
+        };
 
-        jQuery.post(api+'/pass').then(function(){
+        $.ajax({url: api+'/pass',
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify(data)
+        }).then(function(){
             window.location.reload(true);
         });
     });

@@ -1,13 +1,15 @@
 var _ = require('lodash');
 var express = require('express');
 var bodyParser = require('body-parser');
-
 var makeGame = require('./GameFactory').create;
+var command = require('./command');
+var executor = require('./CommandExecutor');
 
 // front sends client code
 var front = express();
 
 var games = {};
+
 
 front.set('port', (process.env.PORT || 4000));
 front.set('views', __dirname+'/views');
@@ -33,12 +35,14 @@ front.use(function(req, res, next) {
 
 front.param('gameId', function (req, res, next, id) {
 	req.game = req.locals.game = games[id];
+
 	next();
 });
 
 front.param('playerId', function(req, res, next, id) {
 	var players = req.game.players;
 	req.player = req.locals.player = players.getPlayer(id);
+
 	next();
 });
 
@@ -64,13 +68,15 @@ api.use(function(req, res, next) {
 
 api.param('gameId', function(req, res, next, id) {
 	req.game = games[id];
+    req.exec = function(player, command){ return executor(req.game).execute(player, command)};
 	next();
 });
 
 api.param('playerId', function(req, res, next, id) {
 	var game = req.game;
-	if(!!game) 
-		req.player = game.players.getPlayer(id);
+	if(!!game) {
+        req.player = game.players.getPlayer(id);
+    }
 	next();	
 });
 
@@ -97,47 +103,28 @@ api.get('/game/:gameId/players/:playerId',function (req, res) {
     res.json(req.player);
 });
 
-api.post('/game/:gameId/players/:playerId/execute',function (req, res) {
-    var game = games[req.params.gameId];
-
-    game.endCurrentTurn();
-
-    res.type('application/json');
-    res.json(games[req.params.gameId].players.players[req.params.playerId]);
-});
-
-api.post('/game/:gameId/players/:playerId/shovel-track', function(req, res){
-    req.player.upgradeShovelTrack();
-    res.json();
-});
-
 api.post('/game/:gameId/players/:playerId/dig', function(req, res){
-    var q = parseInt(req.body['dig[q]']);
-    var r = parseInt(req.body['dig[r]']);
-    var cost = parseInt(req.body.spades);
-    req.game.world.dig(cost, q, r);
-    res.json(req.game);
-});
-
-api.post('/game/:gameId/players/:playerId/build', function(req, res){
-    var hex = getQAndRFromBody(req.body);
-    req.game.buildings.putAt(req.player, 'dwelling', hex);
+    req.exec(req.player, command().transform(req.body.q, req.body.r, req.body.distance));
     res.json(req.game);
 });
 
 api.post('/game/:gameId/players/:playerId/pass', function(req, res){
-    var game = games[req.params.gameId];
-    var player = game.players.getPlayer(req.params.playerId);
-
-    player.passed = true;
-    game.endCurrentTurn();
+    req.exec(req.player, command().pass());
 
     res.type('application/json');
-    res.json(game);
+    res.json(req.game);
 });
 
 api.post('/game/:gameId/players/:playerId/shipping-track', function(req, res){
-    res.json();
+    req.exec(req.player, command().advanceShippingTrack());
+
+    res.type('application/json');
+    res.json(req.game);
+});
+
+api.post('/game/:gameId/players/:playerId/shovel-track', function(req, res){
+    req.exec(req.player, command().advanceShovelTrack());
+    res.json(req.game);
 });
 
 front.use('/api', api);
@@ -149,11 +136,3 @@ var server = front.listen(front.get('port'), function () {
 
     console.log('Listening at http://%s:%s', host, port);
 });
-
-function getQAndRFromBody(body) {
-    if(body['dig[q]']) {
-        return {q: body['dig[q]'], r: body['dig[r]']};
-    } else {
-        return {q: body['upgrade[q]'], r: body['upgrade[r]']};
-    }
-}
