@@ -84,6 +84,15 @@ Buildings.prototype.putAt = function(owner, type, q, r) {
 	list.push(newBuilding);	
 };
 
+Buildings.prototype.upgrade = function(q, r) {
+	var building = this.getAtPos(q, r);
+	if(building.type == 'DWELLING') {
+		building.type = 'TRADINGPOST';
+	} else if(building.type == 'TRADINGPOST') {
+		building.type = 'STRONGHOLD'
+	}
+};
+
 /*
 { 
 	position: { q: 0, r: 0 },
