@@ -1,3 +1,9 @@
+module.exports = {
+	name: 'Witches',
+	homeTerrain: 'FOREST'
+};
+
+
 function WitchesFaction() {
 	return {
 		supply: {
@@ -54,4 +60,3 @@ function WitchesFaction() {
 	}
 }
 
-module.exports = WitchesFaction;
