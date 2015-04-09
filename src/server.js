@@ -10,13 +10,12 @@ var front = express();
 
 var games = {};
 
-
 front.set('port', (process.env.PORT || 4000));
 front.set('views', __dirname+'/views');
 front.set('view engine', 'jade');
 
 front.use(express.static(__dirname+'/../bower_components'));
-front.use(express.static(__dirname+'/../public'));
+front.use('/public', express.static(__dirname+'/../public'));
 
 front.use(bodyParser.urlencoded({ extended: false })); // parse application/x-www-form-urlencoded
 front.use(bodyParser.json()); // parse application/json
@@ -81,7 +80,7 @@ api.param('playerId', function(req, res, next, id) {
 });
 
 api.post('/game',function (req, res) {
-    var game = makeGame(2);
+    var game = makeGame(2, true);
     games[game.id] = game;
 
     res.json(game);

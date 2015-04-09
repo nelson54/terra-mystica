@@ -1,4 +1,5 @@
 module.exports = {
 	name: 'Alchemists',
-	homeTerrain: 'SWAMP'
+	homeTerrain: 'SWAMP',
+	startingState: require('./util/genericFaction') 
 };

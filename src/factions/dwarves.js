@@ -1,4 +1,5 @@
 module.exports = {
 	name: 'Dwarves',
-	homeTerrain: 'MOUNTAIN'
+	homeTerrain: 'MOUNTAIN',
+	startingState: require('./util/genericFaction') 
 };

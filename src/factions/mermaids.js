@@ -1,4 +1,5 @@
 module.exports = {
 	name: 'Mermaids',
-	homeTerrain: 'LAKES'
+	homeTerrain: 'LAKES',
+	startingState: require('./util/genericFaction') 
 };

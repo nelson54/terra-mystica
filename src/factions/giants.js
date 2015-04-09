@@ -1,4 +1,5 @@
 module.exports = {
 	name: 'Giants',
-	homeTerrain: 'WASTELAND'
+	homeTerrain: 'WASTELAND',
+	startingState: require('./util/genericFaction') 
 };

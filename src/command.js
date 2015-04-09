@@ -50,6 +50,9 @@ Command.prototype.transform = function(q,r, distance) {
 	return new Command(this.actions, { type: 'transform', q: q, r: r, distance: distance });
 };
 
+Command.prototype.selectFaction = function(faction) {
+	return new Command(this.actions, { type: 'select faction', faction: faction });
+};
 
 // burn [amt]
 // pass [bonus tile]

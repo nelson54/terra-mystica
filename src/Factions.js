@@ -24,22 +24,29 @@ function Factions() {
 }
 
 Factions.prototype.listAvailable = function() {
-	return _(this.factions)
-	 .values()
-	 .flatten()
-	 .pluck('name')
-	 .value();
-}
+	return _.pluck(this.factions, 'name');
+};
 
 Factions.prototype.select = function(key) {
-	var faction = null;
+	var faction = this.get(key);
+	if(!!faction) {
+		this.factions = _.reject(this.factions, { homeTerrain: faction.homeTerrain });
+	}
 
-	//this.factions = _.reject(this.factions, function(factions, key) {
-	//	var index = _.(
-	//});
+	return faction; //TODO is this right?
+};
 
-}
+Factions.prototype.isAvailable = function(key) {
+	return !!this.get(key);
+};
+
+Factions.prototype.get = function(key) {
+	var kebabedKey = _.kebabCase(key);
+	return _.find(this.factions, function(faction) { 
+		return _.kebabCase(faction.name) === kebabedKey; 
+	});
+};
 
 function allFactions() {
-	_.groupBy(factions, 'homeTerrain');
+	return factions.slice();
 }
