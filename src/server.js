@@ -9,6 +9,7 @@ var front = express();
 
 var games = {};
 
+
 var commandFacadeProvider = function(gameId, playerId){
     var game = games[gameId];
     var player = game.players.getPlayer(playerId);
