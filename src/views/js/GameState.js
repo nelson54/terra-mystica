@@ -36,11 +36,22 @@
 		this.hexes.forEach(this.createHex, this);
 		this.buildings.list.forEach(this.addBuildingToHex, this);
 		//this.addBuildingToHex({pos:{q:5,r:5}});
+
+		this.selectedSprite = this.add.sprite(0, 0, 'building');
+
+		this.input.onTap.add(function() {
+			var x = this.game.input.mousePointer.worldX;
+			var y = this.game.input.mousePointer.worldY;
+
+			var hex = pixel2hex(x, y);
+			
+			this.setSelected(hex.q, hex.r);
+		}, this);
 	};
 
 	GameState.prototype.update = function(){
 		if(this.selectedCenter){
-			var sprite = this.add.sprite(this.selectedCenter.x + 15, this.selectedCenter.y + 15, 'building');
+			this.selectedSprite.position.setTo(this.selectedCenter.x + 15, this.selectedCenter.y + 15);
 		}
 	};
 

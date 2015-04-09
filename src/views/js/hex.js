@@ -21,7 +21,7 @@
 	function pixel2hex(x, y) {
 		var cx = (x * Math.sqrt(3)/3 - y / 3) / hexSize;
 		var cz = y  * 2/3 / hexSize;
-		var cy = -x-z;
+		var cy = -cx-cz;
 
 		var rx = Math.round(cx);
 		var ry = Math.round(cy);
