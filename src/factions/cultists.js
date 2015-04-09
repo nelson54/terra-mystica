@@ -1,4 +1,5 @@
 module.exports = {
 	name: 'Cultists',
-	homeTerrain: 'PLAINS'
+	homeTerrain: 'PLAINS',
+	startingState: require('./util/genericFaction') 
 };

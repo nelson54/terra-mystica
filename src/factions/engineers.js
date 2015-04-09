@@ -1,4 +1,5 @@
 module.exports = {
 	name: 'Engineers',
-	homeTerrain: 'MOUNTAIN'
+	homeTerrain: 'MOUNTAIN',
+	startingState: require('./util/genericFaction') 
 };

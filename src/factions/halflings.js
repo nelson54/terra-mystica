@@ -1,4 +1,5 @@
 module.exports = {
 	name: 'Halflings',
-	homeTerrain: 'PLAINS'
+	homeTerrain: 'PLAINS',
+	startingState: require('./util/genericFaction') 
 };

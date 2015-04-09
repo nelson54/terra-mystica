@@ -22,7 +22,11 @@ var Game = function(players, world, buildings){
 		
 	this.startFactionSelect = function() {
 		this.phase = 'FACTION_SELECT';
+		this.currentPlayerId = players.turnOrder[0];
+
+		//If faction is "Chaos magicians", skip them!
 		
+		this.factions = new Factions();
 	}
 
     this.endCurrentTurn = function() {

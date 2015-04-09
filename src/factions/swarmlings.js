@@ -1,4 +1,5 @@
 module.exports = {
 	name: 'Swarmlings',
-	homeTerrain: 'LAKES'
+	homeTerrain: 'LAKES',
+	startingState: require('./util/genericFaction') 
 }
