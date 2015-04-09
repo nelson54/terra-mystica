@@ -12,6 +12,14 @@
 		sprite.anchor.setTo();
 	};
 
+	GameState.prototype.setSelected = function(q,r){
+		if(!q && !r){
+			this.selectedCenter = undefined;
+		} else {
+			this.selectedCenter = hex2pos(q, r);
+		}
+	};
+
 	GameState.prototype.create = function() {
 		this.map = this.add.group(this, 'map', true);
 		this.textures = [
@@ -31,7 +39,9 @@
 	};
 
 	GameState.prototype.update = function(){
-
+		if(this.selectedCenter){
+			var sprite = this.add.sprite(this.selectedCenter.x + 15, this.selectedCenter.y + 15, 'building');
+		}
 	};
 
 	GameState.prototype.preload = function(){
