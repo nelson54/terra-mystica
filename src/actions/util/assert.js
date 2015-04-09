@@ -1,5 +1,5 @@
 var _ = require('lodash');
-var err = require('./util/error');
+var err = require('./error');
 
 module.exports = assert;
 

@@ -10,8 +10,9 @@ $(function(){
 
     $('#dig').on('click', function(e){
         var data = {
-            dig: hex,
-            spades: -1
+            q: hex.q,
+            r: hex.r,
+            distance: -1
         };
 
         $.ajax({url: api+'/dig',

@@ -7,14 +7,14 @@ var Player = function(data){
     this.points = 20;
     _.merge(this, data);
 
-    this.upgradeShippingTrack = function(){
+    this.advanceShippingTrack = function(){
         var shipping = this.shipping;
         if(shipping.current < shipping.max){
             shipping.current++;
         }
     };
 
-    this.upgradeShovelTrack = function(){
+    this.advanceSpadeTrackTrack = function(){
         var shovel = this.shovel;
         if(shovel.current < shovel.max){
             shovel.current++;

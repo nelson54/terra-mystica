@@ -7,8 +7,8 @@ function execute(game, player, action) {
 	assert(game, 'PLAY');
 
 	var amount = action.amount;
-	var bowls = player.bowls;		
-	var removeFromBowl1 = amount * 2;	
+	var bowls = player.bowls;
+	var removeFromBowl1 = amount * 2;
 
 	if(bowls[1] >= removeFromBowl1) {
 		bowl[1] -= removeFromBowl1;

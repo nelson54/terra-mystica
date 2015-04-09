@@ -1,5 +1,11 @@
+
 var executors = {
-	burn: require('actions/burn')
+	'burn' : require('./actions/burn'),
+	'pass' : require('./actions/pass'),
+	'build' : require('./actions/build'),
+	'advance shipping' : require('./actions/advanceShippingTrack'),
+	'advance spades' : require('./actions/advanceSpadeTrack'),
+	'transform' : require('./actions/transform')
 };
 
 module.exports = commandExecutor;
@@ -9,7 +15,7 @@ function commandExecutor(game) {
 		execute: execute
 	};
 
-	function execute(playerId, command) {
+	function execute(player, command) {
 		var executor, action, 
 			actions = command.actions || [];
 
@@ -17,10 +23,12 @@ function commandExecutor(game) {
 		for(i=0; i < len; i++) {
 			action = actions[i];
 			executor = executors[action.type];
-			
+
+			player = (typeof player === 'object') ? player : getPlayer(player);
+
 			if(!!executor) {
-				executor(game, getPlayer(playerId), action);
-				game.history.push([playerId, command]);
+				executor(game, player, action);
+				game.history.push([player.id, command]);
 			}
 			else {
 				//TODO some kind of error

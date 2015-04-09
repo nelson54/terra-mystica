@@ -21,7 +21,7 @@ var World = function(width, height, hexs){
         var arrayPos = q * this.width + r;
         return this.hexs[arrayPos];
     };
-    this.dig = function(distance, q, r) {
+    this.transform = function(distance, q, r) {
         var hex = this.getHexByCoord(q, r);
         hex.terrainType = this.getTerrainTypeByCost(distance, hex);
     };
