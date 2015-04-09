@@ -5,6 +5,7 @@ var gameUtils = require('./gameUtils');
  *		SELECT_FACTION
  *		PLACE_DWELLINGS
  *		PLAY
+ *		LEECHING
  *		GAME_OVER
  */
 
