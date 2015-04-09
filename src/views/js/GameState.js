@@ -7,16 +7,17 @@
 	GameState.prototype.constructor = GameState;
 
 	GameState.prototype.addBuildingToHex = function(building){
+		//TODO use building.type to determine the texture name to use
 		var pos = hex2pos(building.pos.q, building.pos.r);
 		var sprite = this.add.sprite(pos.x + 15, pos.y + 15, 'building');
 		sprite.anchor.setTo();
 	};
 
-	GameState.prototype.setSelected = function(q,r){
-		if(!q && !r){
+	GameState.prototype.setSelected = function(hex){
+		if(!hex.q || !hex.r){
 			this.selectedCenter = undefined;
 		} else {
-			this.selectedCenter = hex2pos(q, r);
+			this.selectedCenter = hex2pos(hex.q, hex.r);
 		}
 	};
 
@@ -56,6 +57,7 @@
 	};
 
 	GameState.prototype.preload = function(){
+		//TODO add new textures here
 		this.load.image('building','/public/images/building.png');
 	};
 
