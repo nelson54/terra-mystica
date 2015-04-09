@@ -35,7 +35,7 @@ function Players() {
     }
 
 	this.allHaveFactions = function() {
-		return !_(this.players).pluck('faction').any(_.isDefined);
+		return !_(this.players).pluck('faction').any(_.isUndefined);
 	}
 };
 

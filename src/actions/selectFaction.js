@@ -1,11 +1,12 @@
 var assert = require('./util/assert');
 var err = require('./util/error');
+var _ = require('lodash');
 
 module.exports = execute;
 
 function execute(game, player, action) {
-	assert.phase(game, 'FACTION_SELECT');	
-	assert.turn(game, player);
+	//assert.phase(game, 'FACTION_SELECT');
+	//assert.turn(game, player);
 
 	var choice = action.faction;
 	var factions = game.factions;

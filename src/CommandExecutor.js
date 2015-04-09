@@ -41,7 +41,7 @@ function commandExecutor(game) {
 
 	function getPlayer(playerId) {
 		var player = game.players.getPlayer(playerId);		
-		if(!!player) {
+		if(!player) {
 			var msg = 'Player "' + playerId + '" does not exist!';
 			err('PLAYER_NOT_FOUND', msg);
 		}
