@@ -27,7 +27,7 @@
 
 		this.hexes.forEach(this.createHex, this);
 		this.buildings.list.forEach(this.addBuildingToHex, this);
-		this.addBuildingToHex({pos:{q:5,r:5}});
+		//this.addBuildingToHex({pos:{q:5,r:5}});
 	};
 
 	GameState.prototype.update = function(){

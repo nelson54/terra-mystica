@@ -64,6 +64,6 @@ function randomizeFaction(game) {
 function findFirstOfType(game, typeValue){
     return _.chain(game.world.hexs)
         .filter(function(hex){return hex.terrainType.value == typeValue})
-        .first()
+        .sample()
         .value();
 }
