@@ -2,9 +2,10 @@ var gameUtils = require('./gameUtils');
 
 /*
  * Phases:
- *		SELECT_FACTION
+ *		FACTION_SELECT
  *		PLACE_DWELLINGS
  *		PLAY
+ *		LEECHING
  *		GAME_OVER
  */
 
@@ -18,7 +19,13 @@ var Game = function(players, world, buildings){
     this.buildings = buildings;
 	this.history = [];
 
-    this.endCurrentTurn = function(){
+		
+	this.startFactionSelect = function() {
+		this.phase = 'FACTION_SELECT';
+		
+	}
+
+    this.endCurrentTurn = function() {
         if(this.isEndOfGame()){
             this.phase = 'GAME_OVER';
         }

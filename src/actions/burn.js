@@ -4,7 +4,9 @@ var assert = require('./util/assert');
 module.exports = execute;
 
 function execute(game, player, action) {
-	assert(game, 'PLAY');
+	assert.phase(game, 'PLAY');
+	assert.turn(game, player);
+	assert.passed(player, false);
 
 	var amount = action.amount;
 	var bowls = player.bowls;
