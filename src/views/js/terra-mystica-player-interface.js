@@ -21,7 +21,7 @@ $(function(){
             data: JSON.stringify(data)
         }).then(function(response){
                 window.location.reload();
-            });
+        });
     });
 
     $('#build').on('click', function(e){
@@ -57,7 +57,7 @@ $(function(){
         });
     });
 
-    $('#gainPower').on('click', function(e){
+    $('#burnPower').on('click', function(e){
         $.ajax({url:api+'/burnPower'}).then(function(){
             window.location.reload(true);
         });

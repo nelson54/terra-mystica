@@ -13,4 +13,5 @@ var playerId = $('#terra-mystica').data('playerId');
 jQuery.ajax('/api/game/'+ gameId).then(function(response) {
     game.state.start('main');
     game_state.hexes = response.world.hexs;
+    game_state.buildings = response.buildings;
 });
