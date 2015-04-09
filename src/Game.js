@@ -1,17 +1,20 @@
 var gameUtils = require('./gameUtils');
+var Factions = require('./Factions');
 
 /*
  * Phases:
+ *		NEW
  *		FACTION_SELECT
  *		PLACE_DWELLINGS
  *		PLAY
- *		LEECHING
+ *	 		LEECHING
+ *	 		END OF ROUND BONUS SPADES
  *		GAME_OVER
  */
 
 var Game = function(players, world, buildings){
     this.id = gameUtils.makeId();
-    this.phase = "PLAY";
+    this.phase = "NEW";
     this.rounds = 0;
     this.currentPlayerId = players.turnOrder[0];
     this.world = world;
@@ -19,6 +22,37 @@ var Game = function(players, world, buildings){
     this.buildings = buildings;
 	this.history = [];
 
+	this.getCurrentPlayer = function() {
+		var players = this.players, 
+			id = this.currentPlayerId;
+
+		return players.getPlayer(id);
+	}
+
+	this.next = function() {
+		switch(this.phase) {
+			case 'NEW':
+				this.startFactionSelect();
+				break;
+
+			case 'FACTION_SELECT':
+				if(this.players.allHaveFactions()) {
+					delete this.factions;
+					this.startPlay();
+				}
+				else {
+					this.nextPlayer();
+				}
+				break;
+		}
+	}
+
+	this.nextPlayer = function() {
+		var players = this.players,
+			id = this.currentPlayerId;
+
+		this.currentPlayerId = players.nextInTurnOrder(id);
+	}
 		
 	this.startFactionSelect = function() {
 		this.phase = 'FACTION_SELECT';
@@ -27,6 +61,12 @@ var Game = function(players, world, buildings){
 		//If faction is "Chaos magicians", skip them!
 		
 		this.factions = new Factions();
+	}
+
+	this.startPlay = function() {
+		this.round = 0;
+		this.currentPlayerId = players.turnOrder[0];
+		this.phase = "PLAY";
 	}
 
     this.endCurrentTurn = function() {

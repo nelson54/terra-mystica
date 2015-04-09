@@ -1,5 +1,6 @@
 var _ = require('lodash');
-var Players = function () {
+
+function Players() {
     this.turnOrder = [];
     this.players = {};
 
@@ -32,6 +33,10 @@ var Players = function () {
             this.players[id].resetPlayerForRound();
         }
     }
+
+	this.allHaveFactions = function() {
+		return !_(this.players).pluck('faction').any(_.isDefined);
+	}
 };
 
 module.exports = Players;

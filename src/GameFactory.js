@@ -6,7 +6,14 @@ var Players = require('./Players');
 var Player = require('./Player');
 var Buildings = require('./buildings');
 
-module.exports.create = function(numberOfPlayers){
+//TODO really doesn't go here
+// #shame
+var actionAssert = require('./actions/util/assert'); 
+var commandExecutor = require('./CommandExecutor');
+var command = require('./command');
+// #endshame
+
+module.exports.create = function(numberOfPlayers, randomize) {
     var height = 9;
     var width = 13;
 
@@ -31,6 +38,21 @@ module.exports.create = function(numberOfPlayers){
     var grid = new World(width, height, hexs);
 
     var buildings = new Buildings(players, grid);
-    return new Game(players, grid, buildings);
+	var game = new Game(players, grid, buildings);
+
+	game.startFactionSelect();
+	if(randomize) {
+		_.times(numberOfPlayers, _.partial(randomizeFaction, game) );
+	}
+
+	return game;
 };
 
+function randomizeFaction(game) {
+	actionAssert.phase(game, 'FACTION_SELECT');	
+	
+	var choice = _.sample(game.factions.listAvailable());
+	var executor = commandExecutor(game);
+
+	executor.execute(game.currentPlayerId, command().selectFaction(choice));
+}

@@ -81,7 +81,7 @@ api.param('playerId', function(req, res, next, id) {
 });
 
 api.post('/game',function (req, res) {
-    var game = makeGame(2);
+    var game = makeGame(2, true);
     games[game.id] = game;
 
     res.json(game);

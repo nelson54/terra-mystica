@@ -42,7 +42,7 @@ Factions.prototype.isAvailable = function(key) {
 
 Factions.prototype.get = function(key) {
 	var kebabedKey = _.kebabCase(key);
-	return = _.find(this.factions, function(faction) { 
+	return _.find(this.factions, function(faction) { 
 		return _.kebabCase(faction.name) === kebabedKey; 
 	});
 };

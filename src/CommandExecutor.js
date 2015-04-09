@@ -5,7 +5,8 @@ var executors = {
 	'build' : require('./actions/build'),
 	'advance shipping' : require('./actions/advanceShippingTrack'),
 	'advance spades' : require('./actions/advanceSpadeTrack'),
-	'transform' : require('./actions/transform')
+	'transform' : require('./actions/transform'),
+	'select faction': require('./actions/selectFaction')
 };
 
 module.exports = commandExecutor;
@@ -29,6 +30,7 @@ function commandExecutor(game) {
 			if(!!executor) {
 				executor(game, player, action);
 				game.history.push([player.id, command]);
+				game.next();
 			}
 			else {
 				//TODO some kind of error
