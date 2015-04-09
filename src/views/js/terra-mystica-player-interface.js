@@ -26,7 +26,8 @@ $(function(){
 
     $('#build').on('click', function(e){
         var data = {
-            upgrade: hex
+            q: hex.q,
+            r: hex.r
         };
 
         $.ajax({url: api+'/build',
