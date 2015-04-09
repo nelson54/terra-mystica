@@ -56,9 +56,9 @@ Buildings.prototype.indexOfPos = function() {
 	return -1;
 }
 
-Buildings.prototype.removeAt = function(pos) {
+Buildings.prototype.removeAt = function(q, r) {
 	var list = this.list;
-	var index = this.indexOfPos(pos);
+	var index = this.indexOfPos(q, r);
 
 	if(index >= 0) {
 		var building = list[index];
@@ -72,15 +72,15 @@ Buildings.prototype.removeAt = function(pos) {
 	return false;
 };
 
-Buildings.prototype.putAt = function(owner, type, pos) {
+Buildings.prototype.putAt = function(owner, type, q, r) {
 	var list = this.list;
 	var newBuilding = {
 			owner: owner,
 			type: type,
-			pos: _.cloneDeep(pos)
+			pos: {q: q, r: r}
 		};
 
-	this.removeAt(pos);
+	this.removeAt(q, r);
 	list.push(newBuilding);	
 };
 
