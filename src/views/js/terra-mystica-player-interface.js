@@ -39,6 +39,21 @@ $(function(){
             })
     });
 
+    $('#upgrade').on('click', function(e){
+        var data = {
+            q: hex.q,
+            r: hex.r
+        };
+
+        $.ajax({url: api+'/upgrade',
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify(data)
+        }).then(function(response){
+
+        })
+    });
+
     $('#shovelTrack').on('click', function(e){
         $.ajax({url:api+'/shovel-track', method:'post'}).then(function(){
             location.reload();
