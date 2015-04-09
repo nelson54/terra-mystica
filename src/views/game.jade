@@ -33,13 +33,13 @@ include base.jade
                 span.amount=amount
 
     #shipping
-        h3 Shipping
+        h3 Shipping (#{player.shipping.current})
         - var shipping = player.shipping;
         p
             strong= shipping.upgradeCost
 
     #shovel
-        h3 Shovel
+        h3 Shovel (#{player.shovel.current})
         - var shovel = player.shovel;
         p
             strong= shovel.upgradeCost

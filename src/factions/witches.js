@@ -1,6 +1,7 @@
 module.exports = {
 	name: 'Witches',
-	homeTerrain: 'FOREST'
+	homeTerrain: 'FOREST',
+	_witchFaction: WitchesFaction
 };
 
 

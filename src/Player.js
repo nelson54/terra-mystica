@@ -8,17 +8,13 @@ var Player = function(data){
     _.merge(this, data);
 
     this.advanceShippingTrack = function(){
-        var shipping = this.shipping;
-        if(shipping.current < shipping.max){
-            shipping.current++;
-        }
+        this.shipping = this.shipping || {current : 0};
+        this.shipping.current++;
     };
 
-    this.advanceSpadeTrackTrack = function(){
-        var shovel = this.shovel;
-        if(shovel.current < shovel.max){
-            shovel.current++;
-        }
+    this.advanceSpadeTrack = function(){
+        this.shovel = this.shovel || {current: 0};
+        this.shovel.current++;
     };
 
     this.leechPower = function(amount){
