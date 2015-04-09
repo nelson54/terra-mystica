@@ -12,6 +12,14 @@
 		sprite.anchor.setTo();
 	};
 
+	GameState.prototype.setSelected = function(q,r){
+		if(!q && !r){
+			this.selectedCenter = undefined;
+		} else {
+			this.selectedCenter = hex2pos(q, r);
+		}
+	};
+
 	GameState.prototype.create = function() {
 		this.map = this.add.group(this, 'map', true);
 		this.textures = [
@@ -27,11 +35,24 @@
 
 		this.hexes.forEach(this.createHex, this);
 		this.buildings.list.forEach(this.addBuildingToHex, this);
-		this.addBuildingToHex({pos:{q:5,r:5}});
+		//this.addBuildingToHex({pos:{q:5,r:5}});
+
+		this.selectedSprite = this.add.sprite(0, 0, 'building');
+
+		this.input.onTap.add(function() {
+			var x = this.game.input.mousePointer.worldX;
+			var y = this.game.input.mousePointer.worldY;
+
+			var hex = pixel2hex(x, y);
+			
+			this.setSelected(hex.q, hex.r);
+		}, this);
 	};
 
 	GameState.prototype.update = function(){
-
+		if(this.selectedCenter){
+			this.selectedSprite.position.setTo(this.selectedCenter.x + 15, this.selectedCenter.y + 15);
+		}
 	};
 
 	GameState.prototype.preload = function(){

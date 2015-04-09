@@ -5,7 +5,9 @@ We have lots of work to do.
 
 - [x] Create game
 - [x] Join game
-- [ ] Select factions
+- [ ] FactionSelect
+ - [ ] UI 
+ - [x] backend
 - [ ] Draft starting hexes
 - [ ] Bonus tiles
 - [x] Render map
@@ -13,9 +15,12 @@ We have lots of work to do.
 - [x] Turns
 - [x] Rounds
 - [x] End game
-- [ ] Add/upgrade buildings
+- [ ]  buildings
+-  [x] Add
+-  [ ] Update
+-  [x] Render
  - [ ] Determine direct and indirect adjacency
-- [ ] Terraform
+- [x] Terraform
 - [ ] Use spells
 - [ ] Priest track
 - [x] Power bowls

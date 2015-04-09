@@ -3,15 +3,18 @@ var _ = require('lodash');
 module.exports = error;
 
 function error(typeVal, msg) {
-	throw new Error(typeVal, msg);
+	throw new GameError(typeVal, msg);
 }
 
-function Error(typeVal, msg) {
+function GameError(typeVal, msg) {
+	Error.call(this, msg);
 	this._types = !_.isArray(typeVal) ? [typeVal] : typeVal; 
-	this.msg = msg;
+	this.stack = new Error().stack;
 }
 
-Error.prototype.is = function() {
+GameError.prototype = Object.create(Error.prototype);
+
+GameError.prototype.is = function() {
 	var types = this._types;
 	return _.every(arguments, function(type) {
 		 return _.contains(type, type);

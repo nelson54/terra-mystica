@@ -79,8 +79,8 @@ Buildings.prototype.putAt = function(owner, type, q, r) {
 			type: type,
 			pos: {q: q, r: r}
 		};
-
-	this.removeAt(q, r);
+	//TODO removeAt is broken when there is more than one item in list
+	//this.removeAt(q, r);
 	list.push(newBuilding);	
 };
 

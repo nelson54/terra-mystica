@@ -18,6 +18,33 @@
 		return pos;
 	}
 
+	function pixel2hex(x, y) {
+		var cx = (x * Math.sqrt(3)/3 - y / 3) / hexSize;
+		var cz = y  * 2/3 / hexSize;
+		var cy = -cx-cz;
+
+		var rx = Math.round(cx);
+		var ry = Math.round(cy);
+		var rz = Math.round(cz);
+
+		var dx = Math.abs(rx - cx);
+		var dy = Math.abs(ry - cy);
+		var dz = Math.abs(rz - cz);
+
+		if(dx > dy && dx > dz)
+			rx = -ry-rz;
+		else if (dy > dz)
+			ry = -rx-rz;
+		else
+			rz = -rx-ry;
+
+		return {
+			q: rx + (rz - (rz & 1)) / 2,
+			r: rz
+		};
+	}
+
+
 	function hexVertices(center) {
 		return [0,1,2,3,4,5].map(function(i) {
 			return vertex(center, i);
@@ -54,4 +81,5 @@
 	globals.hexSize = hexSizeProperty;
 	globals.hex2pos = hex2pos;
 	globals.hexVertices = hexVertices;
+	globals.pixel2hex = pixel2hex;
 })(this);

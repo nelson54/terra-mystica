@@ -18,4 +18,5 @@ function execute(game, player, action) {
 		
 	var faction = factions.select(choice); 
 	_.extend(player, faction.startingState());
+	player.faction = faction.name;
 }
