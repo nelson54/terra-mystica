@@ -7,10 +7,10 @@
 	GameState.prototype.constructor = GameState;
 
 	GameState.prototype.addBuildingToHex = function(building){
-		//TODO use building.type to determine the texture name to use
 		var pos = hex2pos(building.pos.q, building.pos.r);
-		var sprite = this.add.sprite(pos.x + 15, pos.y + 15, 'building');
-		sprite.anchor.setTo();
+		var sprite = this.add.sprite(pos.x, pos.y, building.type);
+		sprite.anchor.setTo(-.5,0);
+		sprite.scale.set(.25,.25);
 	};
 
 	GameState.prototype.setSelected = function(hex){
